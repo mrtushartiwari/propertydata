@@ -6,11 +6,13 @@ class FlatSpider(scrapy.Spider):
 	name = 'flat'
 	allowed_domains = ["magicbricks.com"]
 	start_urls = (
-        'https://www.magicbricks.com/propertyDetails/3-BHK-1360-Sq-ft-Multistorey-Apartment-FOR-Sale-Dhanori-in-Pune&id=4d423233363835343533',
+        'https://www.magicbricks.com/propertyDetails/2-BHK-1067-Sq-ft-Multistorey-Apartment-FOR-Sale-Baner-in-Pune&id=4d423237303834383231',
     )
 	#startindex = 2
 	#titles=values=[]
+	#  detailurl = response.xpath('//a[@class="m-srp-card__title"]/@href').extract()   # it jumps form listing to main page
 	
+
 	
 
 	def parse(self, response):
