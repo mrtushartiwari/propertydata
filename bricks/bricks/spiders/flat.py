@@ -12,6 +12,10 @@ class FlatSpider(scrapy.Spider):
 	#titles=values=[]
 	#  detailurl = response.xpath('//a[@class="m-srp-card__title"]/@href').extract()   # it jumps form listing to main page
 	
+	custom_settings = {
+	# specifies exported fields and order
+	'FEED_EXPORT_FIELDS': ['price','bhk','address','bedroom','area','pricepersquare'],
+	}
 
 	
 
@@ -89,18 +93,18 @@ class FlatSpider(scrapy.Spider):
         	'bedroom' : response.xpath('//div[@class="seeBedRoomDimen"]/text()').extract_first(),
         	'area' :response.xpath('//span[@id="coveredAreaDisplay"]/text()').extract(),
         	'pricepersquare' : response.xpath('//div[@class="fo_11px c_dark_gray"]/text()').extract(),
-        	'scociety' : response.xpath('//span[@class="prop_address"]/a/text()').extract(),
-        	'Carpetarea' : response.xpath('//span[@id="carpetAreaDisplay"]/text()').extract_first(),
-        	'superarea' : response.xpath('//span[@id="coveredAreaDisplay"]/text()').extract(),
-            'status' : statusf,
-            'transaction' : transtype,
-            'amenities' : response.xpath('//div[@class="amenities"]/ul/li/text()').extract(),
-            'connectivity' : response.xpath('//section[2]/ul/li/text()').extract(),
-            'descriptitles': titles,
-            'descripvalues': values,
-            'PropertyID' : response.xpath('//div[@class="propertyId"]/text()').extract_first(),
-            'propertyinfotitle' : D,
-            'propertyinfovalues' : C,
+        	#'scociety' : response.xpath('//span[@class="prop_address"]/a/text()').extract(),
+        	#'Carpetarea' : response.xpath('//span[@id="carpetAreaDisplay"]/text()').extract_first(),
+        	#'superarea' : response.xpath('//span[@id="coveredAreaDisplay"]/text()').extract(),
+            #'status' : statusf,
+            #'transaction' : transtype,
+            #'amenities' : response.xpath('//div[@class="amenities"]/ul/li/text()').extract(),
+            #'connectivity' : response.xpath('//section[2]/ul/li/text()').extract(),
+            #'descriptitles': titles,
+            #'descripvalues': values,
+            #'PropertyID' : response.xpath('//div[@class="propertyId"]/text()').extract_first(),
+            #'propertyinfotitle' : D,
+            #'propertyinfovalues' : C,
         	}
 		yield item
         	
