@@ -5,20 +5,29 @@ import scrapy
 class AppartSpider(scrapy.Spider):
 	name = 'appart'
 	allowed_domains = ['www.makaan.com']
-	start_urls = ['https://www.makaan.com/pune/godrej-properties-infinity-in-mundhwa-4149773/2bhk-2t-842-sqft-apartment']
+	start_urls = ['https://www.makaan.com/pune/builder-project-in-viman-nagar-2773020/2bhk-2t-1140-sqft-apartment']
 	custom_settings = {
 	# specifies exported fields and order
 	'FEED_EXPORT_FIELDS': ["price", "bhk", "area","carpetarea","pricepersquare","additionalrooms","status","possesiondate","locality","projectname","age","roadfaceing","bathroom","floor","balconies", "totalfloor","neworold","opensides","facing","overlooking","ownership","amenitiesavailable","amenitiesnot"],
 	}
 	
 	def parse(self,response):
+		f = open("22k24k.txt", "r")
+		line = f.readline()
+		while line:
+			content = line.strip()
+			#print(content)
+			yield scrapy.Request(url=content, callback=self.parse_details)
+			line = f.readline()	
+		f.close()
 			
-		with open("Singlepagelinks.txt", "r") as myfile:
-			for url in range(0,2001):  # 0 to 2001 done
-				content = myfile.readline()
-				content = content.strip()
-				yield scrapy.Request(url=content, callback=self.parse_details)
-				yield scrapy.Request(url=url, callback=self.parse)
+		#with open("36k38k.txt", "r") as myfile:
+			#for url in myfile:  # 0 to 2001 done
+				#content = myfile.readline()
+				#content = content.strip()
+				#print(content)
+				#yield scrapy.Request(url=content, callback=self.parse_details)
+				#yield scrapy.Request(url=url, callback=self.parse)
 				
 
 	def parse_details(self, response):
