@@ -1,0 +1,13 @@
+setup.py
+makaan/__init__.py
+makaan/items.py
+makaan/middlewares.py
+makaan/pipelines.py
+makaan/settings.py
+makaan/spiders/__init__.py
+makaan/spiders/appart.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt
